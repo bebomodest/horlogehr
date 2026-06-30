@@ -1,0 +1,66 @@
+{
+  "entities": {
+    "fingerprint_record": {
+      "title": "Fingerprint Record",
+      "description": "A record of a single fingerprint log for an employee on a specific date.",
+      "type": "object",
+      "properties": {
+        "employeeName": { "type": "string" },
+        "fingerprintName": { "type": "string" },
+        "employeeJobTitle": { "type": "string" },
+        "date": { "type": "string" },
+        "logs": { "type": "array" },
+        "notes": { "type": "string" },
+        "status": { "type": "string" },
+        "shiftInfo": { "type": "object" },
+        "updatedAt": { "type": "string" },
+        "uid": { "type": "string" }
+      },
+      "required": ["employeeName", "date", "uid"]
+    },
+    "employee": {
+      "title": "Employee",
+      "description": "Details of an employee registered in the system.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "fingerprintName": { "type": "string" },
+        "jobTitle": { "type": "string" },
+        "uid": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["name", "fingerprintName", "jobTitle", "uid"]
+    },
+    "system_user": {
+      "title": "System User",
+      "description": "A user of the administration system.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "jobTitle": { "type": "string" },
+        "username": { "type": "string" },
+        "password": { "type": "string" },
+        "isSuperUser": { "type": "boolean" },
+        "allowedPages": { "type": "array" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["name", "username", "password"]
+    }
+  },
+  "firestore": {
+    "/fingerprints/{recordId}": {
+      "schema": "fingerprint_record",
+      "description": "Collection of fingerprint records."
+    },
+    "/employees/{employeeId}": {
+      "schema": "employee",
+      "description": "Collection of registered employees."
+    },
+    "/system_users/{userId}": {
+      "schema": "system_user",
+      "description": "Collection of system users."
+    }
+  }
+}
