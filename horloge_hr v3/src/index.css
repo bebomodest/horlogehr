@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Cairo", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", ui-serif, Georgia, serif;
+}
+
+/* ─── Reset ──────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+/* ─── html: zoomed, fills viewport ──────────── */
+html {
+  margin: 0;
+  padding: 0;
+  zoom: 0.85;
+  /* 100dvh is the real device viewport height (zoom-aware in browsers) */
+  height: 100dvh;
+  background-color: #e6e1d6;
+}
+
+/* ─── body: flex column, fills html ─────────── */
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  /* Paper texture on body so it shows everywhere including below footer */
+  background-color: #e6e1d6;
+  background-image: url('https://www.transparenttextures.com/patterns/natural-paper.png');
+  background-repeat: repeat;
+}
+
+/* ─── #root: fills body ─────────────────────── */
+#root {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Only div children of #root (pages) get flex-1.
+   Scoped to div so <style> tags / portals are NOT affected. */
+#root > div {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ─── Toast animation ───────────────────────── */
+@keyframes slideIn {
+  from { transform: translateX(-20px); opacity: 0; }
+  to   { transform: translateX(0);     opacity: 1; }
+}
+.animate-slide-in { animation: slideIn 0.3s ease-out; }
+
+/* ─── Print ─────────────────────────────────── */
+@media print {
+  * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+  body { background: white !important; }
+  main { padding: 0 !important; margin: 0 !important; }
+  .pdf-header { display: block !important; }
+}
+
+/* ─── PDF export ─────────────────────────────── */
+.pdf-export-mode .pdf-header { display: block !important; }
+.pdf-export-mode {
+  padding: 40px !important;
+  background-color: #fffdfa !important;
+  width: 1000px !important;
+  margin: 0 auto !important;
+}
+.pdf-export-mode table { width: 100% !important; border-collapse: collapse !important; }
+.pdf-export-mode th, .pdf-export-mode td {
+  border: 1px solid #e6dfd3 !important;
+  padding: 8px !important;
+  font-size: 12px !important;
+}
+.pdf-export-mode th { background-color: #76151e !important; color: white !important; }
+
+/* ─── Scrollbar ──────────────────────────────── */
+.custom-scrollbar::-webkit-scrollbar        { height: 6px; }
+.custom-scrollbar::-webkit-scrollbar-track  { background: #e0dcd0; border-radius: 4px; }
+.custom-scrollbar::-webkit-scrollbar-thumb  { background: #8a1923; border-radius: 4px; }
+.custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #76151e; }

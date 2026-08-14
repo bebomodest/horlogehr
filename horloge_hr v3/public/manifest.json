@@ -1,0 +1,22 @@
+{
+  "name": "Horloge HR",
+  "short_name": "Horloge HR",
+  "description": "نظام إدارة الموارد البشرية",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#e6e1d6",
+  "theme_color": "#76151e",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "https://up6.cc/2026/03/177489580765681.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://up6.cc/2026/03/177489580765681.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
